@@ -33,7 +33,7 @@ const routes = [{
 //2.创建对象 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  // mode: 'history'
 })
 
 //3.导出路由
