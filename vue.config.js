@@ -5,7 +5,7 @@ module.exports = {
       /* 配置别名  默认配置 @为src  */
       alias: {
         'assets': '@/assets',
-        'common': '@/assets',
+        'common': '@/common',
         'components': '@/components',
         'network': '@/network',
         'views': '@/views',
