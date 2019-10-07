@@ -1,12 +1,11 @@
 <template>
-  <div class="good-list-item">
-
-      <img :src="goodsListItem.show.img" @load="imgLoad"/>
-      <div class="good-list-item-info">
-        <p>{{goodsListItem.title}}</p>
-        <span class="price">{{goodsListItem.price}}</span>
-        <span class="favorite">{{goodsListItem.cfav}}</span>
-      </div>
+  <div v-if="Object.keys(goodsListItem).length !==0" class="good-list-item" @click="goodItemClick">
+    <img v-lazy="showImg" @load="imgLoad"/>
+    <div class="good-list-item-info">
+      <p>{{goodsListItem.title}}</p>
+      <span class="price">{{goodsListItem.price}}</span>
+      <span class="favorite">{{goodsListItem.cfav}}</span>
+    </div>
 
   </div>
 </template>
@@ -21,9 +20,23 @@
         }
       }
     },
-    methods:{
-      imgLoad(){
+    computed: {
+      showImg() {
+        return this.goodsListItem.image || this.goodsListItem.show.img
+      }
+    },
+    methods: {
+      imgLoad() {
+
         this.$bus.$emit('itemImgLoad')
+        // if (this.$route.path.indexOf('/home')){
+        //   this.$bus.$emit('homeItemImgLoad')
+        // }else if (this.$route.path.indexOf('/detail')){
+        //   this.$bus.$emit('detailItemImgLoad')
+        // }
+      },
+      goodItemClick() {
+        this.$router.push('/detail/' + this.goodsListItem.iid)
       }
     }
   };

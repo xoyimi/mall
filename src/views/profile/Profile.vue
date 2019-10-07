@@ -1,13 +1,25 @@
 <template>
-  <h2>我的</h2>
+  <div class="profile">
+  <nav-bar class="nav-bar">
+    <div slot="center">我的档案</div>
+  </nav-bar>
+     '
+  </div>
 </template>
 
 <script>
-export default {
-
+import NavBar from "components/common/nav-bar/NavBar";
+  export default {
+    components:{
+      NavBar
+    }
 }
 </script>
 
-<style>
+<style scoped>
 
+.nav-bar{
+  color: #ffffff;
+  background-color: var(--color-tint);
+}
 </style>

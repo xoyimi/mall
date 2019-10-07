@@ -3,7 +3,7 @@
   <div id="home-recommeds">
     <div v-for="item in recommends" class="home-recommeds-item">
       <a :href="item.link">
-        <img :src="item.image" />
+        <img :src="item.image" @load="homeRecommedsLoaded"/>
         <div>{{item.title}}</div>
       </a>
     </div>
@@ -18,6 +18,11 @@ export default {
       default() {
         return [];
       }
+    }
+  },
+  methods:{
+    homeRecommedsLoaded(){
+      this.$emit('homeRecommedsLoaded');
     }
   }
 };
